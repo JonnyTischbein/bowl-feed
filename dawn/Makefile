@@ -9,7 +9,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/berlin-open-wireless-lab/DAWN.git
-PKG_SOURCE_VERSION:=6a73b52e9c549f80a7afcf495fcbd83ea89d2af5
+PKG_SOURCE_VERSION:=1a5509a0450dade79df5412b49a7267227140d92
 PKG_MAINTAINER:=Nick Hainke <vincent@systemli.org>
 CMAKE_INSTALL:=1
 
@@ -36,8 +36,8 @@ define Package/dawn/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/files/dawn.init $(1)/etc/init.d/dawn
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/files/dawn.config $(1)/etc/config/dawn
-	$(INSTALL_DIR) $(1)/etc/dawn
-	$(INSTALL_CONF) $(PKG_BUILD_DIR)/files/mac_list $(1)/etc/dawn/mac_list
+	$(INSTALL_DIR) $(1)/tmp
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/files/mac_list $(1)/tmp/dawn_mac_list
 endef
 
 $(eval $(call BuildPackage,dawn))
